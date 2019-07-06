@@ -284,6 +284,8 @@ module Elasticsearch
         #     Article.__elasticsearch__.delete_index! index: 'my-index'
         #
         def delete_index!(options={})
+          options = options.clone
+
           target_index = options.delete(:index) || self.index_name
 
           begin
@@ -311,6 +313,8 @@ module Elasticsearch
         # @see https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-refresh.html
         #
         def refresh_index!(options={})
+          options = options.clone
+
           target_index = options.delete(:index) || self.index_name
 
           begin
